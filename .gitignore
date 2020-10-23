@@ -1,2 +1,6 @@
 Colin/.idea/
 Colin/venv/
+Common/.idea/
+Common/Helpers/__pycache__/
+Colin/Helpers/__pycache__/
+Common/venv/
