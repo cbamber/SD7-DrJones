@@ -20,9 +20,11 @@ def getauth ( username ):
 def getmvfstories ( mvf_id ):
     stories = jira.search_issues('project= NNO AND issuetype in (Bug,Story,Task) AND \'MVF ID\' =' + mvf_id)
     esr = jira.search_issues('project= ESR AND issuetype in (Bug, Story, Task) AND \'MVF ID\' =' + mvf_id)
-    pprint.pprint(stories)
-    pprint.pprint(esr)
-
+    for key in stories:
+        print(key)
+    for key in esr:
+        print(key)
+        
 
 
 # Don't encode passwords in Git anything :)
@@ -34,7 +36,7 @@ jira = JIRA(server=servername, basic_auth=(username,password))
 # ################################################
 # # Grab all the JIRIA custom field names
 # # ------------------------------------------------
-# resp=jira.fields()
+#resp=jira.fields()
 # fmap = {}
 # for i in resp:
 #     field_name=i[u'name']
