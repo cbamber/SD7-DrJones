@@ -21,10 +21,15 @@ def getmvfstories ( mvf_id ):
     stories = jira.search_issues('project= NNO AND issuetype in (Bug,Story,Task) AND \'MVF ID\' =' + mvf_id)
     esr = jira.search_issues('project= ESR AND issuetype in (Bug, Story, Task) AND \'MVF ID\' =' + mvf_id)
     for key in stories:
+        issue = jira.issue(key)
         print(key)
+        print(issue.fields.customfield_10633)
+        print(issue.fields.resolutiondate)
     for key in esr:
         print(key)
-        
+        print(issue.fields.customfield_10633)
+        print(issue.fields.resolutiondate)
+
 
 
 # Don't encode passwords in Git anything :)
@@ -36,7 +41,7 @@ jira = JIRA(server=servername, basic_auth=(username,password))
 # ################################################
 # # Grab all the JIRIA custom field names
 # # ------------------------------------------------
-#resp=jira.fields()
+# resp=jira.fields()
 # fmap = {}
 # for i in resp:
 #     field_name=i[u'name']
@@ -45,7 +50,9 @@ jira = JIRA(server=servername, basic_auth=(username,password))
 #     #print (i['name'])
 # pprint.pprint(fmap)
 
-getmvfstories('1702')
+mvf_id = input('Please enter your MVF ID: ')
+
+getmvfstories('mvf_id')
 
 
 
