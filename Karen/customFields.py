@@ -50,10 +50,6 @@ jira = JIRA(server=servername, basic_auth=(username,password))
 #     #print (i['name'])
 # pprint.pprint(fmap)
 
-mvf_id = input('Please enter your MVF ID: ')
-
-getmvfstories('mvf_id')
-
-
+getmvfstories('1702')
 
 
