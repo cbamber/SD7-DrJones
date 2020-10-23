@@ -18,7 +18,9 @@ def getauth ( username ):
 password = getauth(username)
 
 jira = JIRA(server=servername, basic_auth=(username,password))
-	
+
+issue = jira.issue("NNO-12345")
+
 
 ## -------------------------------------------------
 ## Grab all the JIRIA custom field names
