@@ -3,14 +3,14 @@
 import getpass
 import pprint
 from jira import JIRA
-#import xlsxwriter
+
 
 servername = "https://nhjira.nanthealth.com"
 username = 'kbennett'
 #username = 'set-me-to-a-name'
 #mvf_id = '1702'
-#workbook = xlsxwriter.Workbook('SparkDay7.xlsx')
-#worksheet = workbook.add_worksheet()
+# wb = Workbook()
+# wb.save('SparkDay7Stories.xlsx')
 
 def getauth ( username ):
     print('Enter JIRA password for ' + username)
@@ -18,8 +18,11 @@ def getauth ( username ):
     return pw
 
 def getmvfstories ( mvf_id ):
-    stories = jira.search_issues('project= NNO OR project= ESR AND issuetype in (Bug,Story,Task) AND \'MVF ID\' =' + mvf_id, maxResults=500)
-    print(stories)
+    stories = jira.search_issues('project= NNO AND issuetype in (Bug,Story,Task) AND \'MVF ID\' =' + mvf_id)
+    esr = jira.search_issues('project= ESR AND issuetype in (Bug, Story, Task) AND \'MVF ID\' =' + mvf_id)
+    pprint.pprint(stories)
+    pprint.pprint(esr)
+
 
 
 # Don't encode passwords in Git anything :)
@@ -42,6 +45,6 @@ jira = JIRA(server=servername, basic_auth=(username,password))
 
 getmvfstories('1702')
 
-# issue = jira.issue('MVF-1702')
-# print(issue)
+
+
 
